@@ -10,3 +10,10 @@ which allows use of `createBrowserHistory` in react-router for better looking UR
 
 webpack-dev-server will serve `index.html` instead of any 404 request, which allows
 react-router to pick up the URL and build the correct application state.
+
+## run locally
+
+```
+$ npm install
+$ npm start # or `webpack-dev-server`
+```
