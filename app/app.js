@@ -1,6 +1,12 @@
 import React from "react";
+import ReactDom from "react-dom";
+import _ from "underscore";
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
 import { Router, Route, IndexRoute, Link, History } from "react-router"
 import createBrowserHistory from 'history/lib/createBrowserHistory'
+
+require('./css/style.scss');
 
 var Home = React.createClass({
   render() {
@@ -30,7 +36,13 @@ var Nested = React.createClass({
 });
 
 var App = React.createClass({
-  render() {
+  componentDidMount: function(){
+    _.each([1,2,3], function(num){ 
+      console.log(num); 
+    });
+  },
+  render: function(){
+    var self = this;
     return (
       <div className="container">
         <ul>
@@ -38,13 +50,13 @@ var App = React.createClass({
           <li><Link to="/about">About</Link></li>
           <li><Link to="/about/nested">About &raquo; Nested</Link></li>
         </ul>
-        {this.props.children}
+        {self.props.children}
       </div>
     );
   }
 });
 
-React.render(
+ReactDom.render(
   <Router history={createBrowserHistory()}>
     <Route path="/" component={App}>
       <IndexRoute component={Home} />
